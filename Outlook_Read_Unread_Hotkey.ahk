@@ -11,8 +11,8 @@ SetTitleMatchMode 2 ; Allow partial match to window titles
 			olItem := olApp.ActiveWindow.CurrentItem
 		catch
 			olItem := olApp.ActiveExplorer.Selection.Item(1)
-		; Only continue if the selected item is an email
-		if (olItem.class <> 43)
+		; Only continue if the selected item is an email or a calendar invite/response. For a complete list of item classes visit https://docs.microsoft.com/en-us/office/vba/api/outlook.olobjectclass
+		if (olItem.class <> 43) and (olItem.class <> 46) and (olItem.class <> 53) and (olItem.class <> 54) and (olItem.class <> 55) and (olItem.class <> 56) and (olItem.class <> 57)
 			return
 		else
 			if (olItem.UnRead <> 0)
